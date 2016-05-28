@@ -5,7 +5,7 @@
  * Copyright (c) 2014-2016 Fengyuan Chen
  * Released under the MIT license
  *
- * Date: 2016-03-26T16:17:15.939Z
+ * Date: 2016-05-28T11:26:23.083Z
  */
 
 (function (global, factory) {
@@ -68,23 +68,6 @@
     return args.slice.apply(obj, args);
   }
 
-  function inArray(value, arr) {
-    var index = -1;
-
-    if (arr.indexOf) {
-      return arr.indexOf(value);
-    } else {
-      each(arr, function (n, i) {
-        if (n === value) {
-          index = i;
-          return false;
-        }
-      });
-    }
-
-    return index;
-  }
-
   function each(obj, callback) {
     var length;
     var i;
@@ -108,6 +91,23 @@
     }
 
     return obj;
+  }
+
+  function inArray(value, arr) {
+    var index = -1;
+
+    if (arr.indexOf) {
+      return arr.indexOf(value);
+    } else {
+      each(arr, function (n, i) {
+        if (n === value) {
+          index = i;
+          return false;
+        }
+      });
+    }
+
+    return index;
   }
 
   function extend(obj) {

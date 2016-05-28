@@ -41,7 +41,7 @@ $(function () {
         break;
 
       case 'example':
-        $.get('http://code.jquery.com/jquery-2.1.4.js').done(function (text) {
+        $.get('https://code.jquery.com/jquery-2.2.4.js').done(function (text) {
           $source.val(text);
           count();
         });

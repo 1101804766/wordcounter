@@ -1,6 +1,11 @@
 # Changelog
 
 
+## 0.1.1 (May 28, 2016)
+
+- Added a new option: `ignorecase` (#2 by @edu-zamora)
+
+
 ## 0.1.0 (Dec 20, 2015)
 
 - Optimize code style

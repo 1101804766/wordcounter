@@ -2,7 +2,7 @@
 
 > JavaScript word counter.
 
-- [Homepage](http://fengyuanchen.github.io/wordcounter)
+- [Demo](https://fengyuanchen.github.io/wordcounter)
 
 
 
@@ -105,12 +105,14 @@ Reports counting result in console.
 
 Ignores words.
 
+
 ### ignorecase
 
 - Type: `Boolean`
 - Default: `false`
 
 Ignores words' cases, treating them as lower case.
+
 
 ## Methods
 
@@ -169,11 +171,18 @@ wordcounter.count(source, function (result, logs) {
 
 ## Browser support
 
-- Chrome (latest 2)
-- Firefox (latest 2)
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Opera (latest)
+- Edge (latest)
 - Internet Explorer 8+
-- Opera (latest 2)
-- Safari (latest 2)
+
+
+
+## Versioning
+
+Maintained under the [Semantic Versioning guidelines](http://semver.org/).
 
 
 

@@ -3,38 +3,38 @@
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();
 var pkg = require('./package');
+var now = new Date();
 var scripts = {
-      all: [
-        'gulpfile.js',
-        'src/wordcounter.js',
-        'demo/js/main.js',
-        'test/*.js'
-      ],
-      demo: 'demo/js',
-      min: 'wordcounter.min.js',
-      src: 'src/wordcounter.js',
-      dest: 'dist'
-    };
+  all: [
+    'gulpfile.js',
+    'src/wordcounter.js',
+    'demo/js/main.js',
+    'test/*.js'
+  ],
+  demo: 'demo/js',
+  src: 'src/wordcounter.js',
+  dest: 'dist'
+};
 var replacement = {
-      regexp: /@\w+/g,
-      filter: function (placeholder) {
-        switch (placeholder) {
-          case '@VERSION':
-            placeholder = pkg.version;
-            break;
+  regexp: /@\w+/g,
+  filter: function (placeholder) {
+    switch (placeholder) {
+      case '@VERSION':
+        placeholder = pkg.version;
+        break;
 
-          case '@YEAR':
-            placeholder = (new Date()).getFullYear();
-            break;
+      case '@YEAR':
+        placeholder = now.getFullYear();
+        break;
 
-          case '@DATE':
-            placeholder = (new Date()).toISOString();
-            break;
-        }
+      case '@DATE':
+        placeholder = now.toISOString();
+        break;
+    }
 
-        return placeholder;
-      }
-    };
+    return placeholder;
+  }
+};
 
 gulp.task('jscopy', function () {
   return gulp.src(scripts.src)
@@ -59,7 +59,9 @@ gulp.task('js', ['jshint', 'jscs'], function () {
     .pipe(plugins.replace(replacement.regexp, replacement.filter))
     .pipe(gulp.dest(scripts.demo))
     .pipe(gulp.dest(scripts.dest))
-    .pipe(plugins.rename(scripts.min))
+    .pipe(plugins.rename({
+      suffix: '.min'
+    }))
     .pipe(plugins.uglify({
       preserveComments: 'license'
     }))
