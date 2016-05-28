@@ -1,11 +1,11 @@
 /*!
- * Word Counter v0.1.0
+ * Word Counter v0.1.1
  * https://github.com/fengyuanchen/wordcounter
  *
- * Copyright (c) 2014-2015 Fengyuan Chen
+ * Copyright (c) 2014-2016 Fengyuan Chen
  * Released under the MIT license
  *
- * Date: 2015-12-20T05:20:53.552Z
+ * Date: 2016-05-28T11:25:14.483Z
  */
 
 (function (global, factory) {
@@ -68,23 +68,6 @@
     return args.slice.apply(obj, args);
   }
 
-  function inArray(value, arr) {
-    var index = -1;
-
-    if (arr.indexOf) {
-      return arr.indexOf(value);
-    } else {
-      each(arr, function (n, i) {
-        if (n === value) {
-          index = i;
-          return false;
-        }
-      });
-    }
-
-    return index;
-  }
-
   function each(obj, callback) {
     var length;
     var i;
@@ -108,6 +91,23 @@
     }
 
     return obj;
+  }
+
+  function inArray(value, arr) {
+    var index = -1;
+
+    if (arr.indexOf) {
+      return arr.indexOf(value);
+    } else {
+      each(arr, function (n, i) {
+        if (n === value) {
+          index = i;
+          return false;
+        }
+      });
+    }
+
+    return index;
   }
 
   function extend(obj) {
@@ -176,6 +176,7 @@
         // Count words
         each(words, function (word) {
           var existed;
+          word = options.ignorecase ? word.toLowerCase() : word;
 
           if (word.length < options.minlength || inArray(word, options.ignore) > -1) {
             return;
@@ -261,7 +262,8 @@
     mincount: 1,
     minlength: 1,
     report: true,
-    ignore: []
+    ignore: [],
+    ignorecase: false
   };
 
 
